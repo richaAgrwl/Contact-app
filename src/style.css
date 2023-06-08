@@ -1,0 +1,28 @@
+.head{
+    text-align: center;
+    background-color: #75cfdd;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 25px;
+}
+.box{
+    padding-bottom: 50px;
+    height: auto;
+    border-radius: 10px;
+}
+.container{
+    border-radius: 5px;
+}
+.list{
+    background-color: white;
+    margin: 2px;
+    padding-bottom: 50px;
+    border-radius: 5px;
+}
+
+.fa{
+    font-size: 20px;
+}
+.btnn{
+    border: none;
+}
