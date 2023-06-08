@@ -14,47 +14,47 @@ const AddContact = (props) => {
 	var emailBox = useRef();
 	var phoneBox = useRef();
 	var addBox = useRef();
-
 	var save = (event) => {
 		event.preventDefault();
 		// Validate the form fields
 		let isValid = true;
 		const newErrors = {};
-
+	
 		if (!formData.name) {
 			newErrors.nameError = "Name is required";
 			isValid = false;
 		}
-
+	
 		if (!formData.email) {
 			newErrors.emailError = "Email is required";
 			isValid = false;
 		}
-
+	
 		if (!formData.phone) {
 			newErrors.phoneError = "Phone number is required";
 			isValid = false;
 		}
-
+	
 		if (!formData.address) {
 			newErrors.addressError = "Address is required";
 			isValid = false;
 		}
-
+	
 		if (isValid) {
 			console.log("Contact saved successfully");
-			var name = nameBox.current.value;
-			var email = emailBox.current.value;
-			var mobile = phoneBox.current.value;
-			var address = addBox.current.value;
+			var name = formData.name;
+			var email = formData.email;
+			var mobile = formData.phone;
+			var address = formData.address;
 			console.log(name, email, mobile, address);
-
+	
 			props.saveContact(name, email, mobile, address);
 			event.target.reset();
 			props.close();
 		}
 		setErrors(newErrors);
 	};
+	
 	const handleChange = (event) => {
 		const { name, value } = event.target;
 		setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
@@ -105,7 +105,8 @@ const AddContact = (props) => {
 									type="email"
 									className="form-control"
 									id="email1"
-									ref={emailBox}
+									name="email"
+									value={formData.email}
 									placeholder="Enter Your Email"
 									onChange={handleChange}
 								/>
@@ -150,7 +151,7 @@ const AddContact = (props) => {
 						<div className="modal-footer border-top-0 d-flex justify-content-center">
 							<button type="submit" className="btn btn-primary">
 								Submit
-							</button>{" "}
+							</button>
 							&nbsp;&nbsp;
 							<button type="reset" className="btn btn-dark">
 								Reset
